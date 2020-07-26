@@ -1,0 +1,1 @@
+25 15 * * * personal/clean/macos.sh >> personal/clean/log.out 2>&1
