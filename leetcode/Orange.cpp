@@ -1,8 +1,13 @@
-class Solution {
-public:
-    int orangesRotting(vector<vector<int>>& grid) {
-        
-        // initialize a queue which will help us find answer
+#include <iostream>
+#include <vector>
+#include <queue>
+
+#include "Orange.h"
+
+using namespace std;
+
+int Oranges::orangesRotting(vector<vector<int>>& grid) {
+    // initialize a queue which will help us find answer
         
         queue<pair<int,int> > q; 
         
@@ -125,5 +130,5 @@ public:
     // If Not, Feel free to comment.    
     
     // Don't hesitate in Upvoting and sharing this solution if you like it ;)) .
-    
-};
+
+}
