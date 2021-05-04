@@ -61,6 +61,23 @@ def search_in_sorted_rotated(arr, number):
     return binary_search(arr, pivot+1, n-1, number)
 
 
+def pair_in_sorted_rotated(arr, sum_two):
+    n = len(arr)
+    pivot = find_pivot(arr, 0, n-1)
+
+    left = (pivot + 1) % n
+    right = pivot
+
+    while left != right:
+        if arr[left] + arr[right] == sum_two:
+            return True
+        if arr[left] + arr[right] < sum_two:
+            left = (left + 1) % n
+        else:
+            right = (n + right - 1) % n
+    return False
+
+
 def using_shift(arr, d, n):
     p = n - d
     for i in range(p):
@@ -71,4 +88,6 @@ def using_shift(arr, d, n):
 if __name__ == "__main__":
     li = [5, 6, 7, 1, 2, 3, 4]
     index = search_in_sorted_rotated(li, 1)
-    print(index)
+    sum_two = 9
+    ifSumExists = pair_in_sorted_rotated(li, sum_two)
+    print(ifSumExists)
