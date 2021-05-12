@@ -1,14 +1,15 @@
-
-def print_array(arr):
-    for i in range(len(arr)):
-        print(arr[i])
-
-
 def reverse(arr, i, j):
     while i < j:
         arr[i], arr[j] = arr[j], arr[i]
         i += 1
         j -= 1
+
+
+def right_using_reverse(arr, d, n):
+    reverse(arr, 0, n-1)
+    reverse(arr, 0, d-1)
+    reverse(arr, d, n-1)
+    return arr
 
 
 def using_reverse(arr, d, n):
@@ -85,9 +86,32 @@ def using_shift(arr, d, n):
     return arr
 
 
+def maximize_arr_sum_by_rotation(arr):
+    """
+    Maximize sum of i*arr[i]
+    """
+    arrSum = 0
+    currVal = 0
+    n = len(arr)
+    for i in range(n):
+        arrSum = arrSum + arr[i]
+        currVal = currVal + (i*arr[i])
+
+    maxVal = currVal
+
+    for j in range(1, n):
+        currVal = currVal + arrSum - (n*arr[n-j])
+        if currVal > maxVal:
+            maxVal = currVal
+
+    return maxVal
+
+
+
+
+
 if __name__ == "__main__":
-    li = [5, 6, 7, 1, 2, 3, 4]
-    index = search_in_sorted_rotated(li, 1)
-    sum_two = 9
-    ifSumExists = pair_in_sorted_rotated(li, sum_two)
-    print(ifSumExists)
+    li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    li1 = [5, 6, 7, 2, 3, 4]
+    li2 = [2, 1]
+    print(right_using_reverse(li, 3, 10))
