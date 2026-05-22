@@ -133,3 +133,5 @@ temp
 
 #pycharm
 .idea
+
+.DS_Store

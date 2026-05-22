@@ -6,7 +6,6 @@ NAKUL = "nakul"
 AMUL = "amul"
 PREET = "preet"
 SURABHI = "surabhi"
-NAKUL_WATCH = "nakul_watch"
 DISCOUNT = "discount"
 
 
@@ -22,7 +21,6 @@ def take_input():
     all[AMUL] = float(input("amul:"))
     all[PREET] = float(input("preetesh: "))
     all[SURABHI] = float(input("surabhi: "))
-    all[NAKUL_WATCH] = float(input("nakul_watch: "))
     return all
 
 
@@ -38,9 +36,7 @@ def calculate(input_map: map):
 
 
 def aggregate(input_map: map):
-    input_map[NAKUL] += input_map[NAKUL_WATCH]
     input_map[PREET] += input_map[SURABHI]
-    del input_map[NAKUL_WATCH]
     del input_map[SURABHI]
     del input_map[TOTAL]
     del input_map[DISCOUNT]
