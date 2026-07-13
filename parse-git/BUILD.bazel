@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+# gazelle:prefix github.com/thenakulchawla/commitparser
+
+exports_files(["go.mod"])
+
+go_library(
+    name = "parse-git_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/thenakulchawla/commitparser",
+    visibility = ["//visibility:private"],
+    deps = ["//parse-git/commitparser"],
+)
+
+go_binary(
+    name = "parse-git",
+    embed = [":parse-git_lib"],
+    visibility = ["//visibility:public"],
+)

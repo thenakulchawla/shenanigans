@@ -135,3 +135,9 @@ temp
 .idea
 
 .DS_Store
+
+# Bazel symlinks
+bazel-*
+
+# Python virtual envs
+.venv/
