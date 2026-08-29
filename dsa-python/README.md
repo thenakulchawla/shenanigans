@@ -1,0 +1,1 @@
+Attempting some algorithms and tricks
