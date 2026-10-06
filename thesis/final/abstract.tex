@@ -1,0 +1,29 @@
+\begin{abstract}
+
+    Blockchain scalability is one of the issues that concerns its current
+    adopters. The current popular blockchains have initially been designed with
+    imperfections that introduce fundamental bottlenecks which limit their
+    ability to have a higher throughput and a lower latency.
+
+    One of the major bottlenecks for existing blockchain technologies is fast block
+    propagation. A faster block propagation enables a miner to reach a majority
+    of the network within a time constraint and therefore leading to a lower
+    orphan rate and better profitability. In order to attain a throughput that
+    could compete with the current state of the art transaction processing,
+    while also keeping the block intervals same as today, a 24.3 Gigabyte
+    block will be required every 10 minutes with an average transaction size of
+    500 bytes, which translates to 48600000 transactions every 10 minutes or about 81000 transactions per second.
+
+    In order to synchronize such large blocks faster across the network while maintaining 
+    consensus by keeping the orphan rate below 50\%, the thesis
+    proposes to aggregate partial block data from multiple nodes using digital
+    fountain codes. The advantages of using a fountain code is that all connected peers can send
+    part of data in an encoded form. When the receiving peer has enough data, it
+    then decodes the information to reconstruct the block. Along with them
+    sending only part information, the data can be relayed over UDP, instead of
+    TCP, improving upon the speed of propagation  in the current blockchains.
+    Fountain codes applied in this research are Raptor codes, which allow
+    construction of infinite decoding symbols. The research, when applied to
+    blockchains, increases success rate of block delivery on decode failures.
+      
+\end{abstract}

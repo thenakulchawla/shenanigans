@@ -1,7 +1,14 @@
 load("@gazelle//:def.bzl", "gazelle")
 
-# Run `bazel run //:gazelle` to (re)generate BUILD.bazel files for parse-git.
+# gazelle:prefix github.com/thenakulchawla/shenanigans
+
+# Run `bazel run //:gazelle` to (re)generate BUILD.bazel files for parse-git and go-dsa.
 gazelle(
     name = "gazelle",
-    args = ["parse-git"],
+    args = [
+        "parse-git",
+        "go-dsa",
+    ],
 )
+
+exports_files(["go.mod", "go.work", "go.work.sum"])

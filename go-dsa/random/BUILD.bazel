@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "random",
+    srcs = [
+        "anthropic.go",
+        "convert.go",
+        "debug.go",
+        "hard.go",
+        "job.go",
+        "leetcode.go",
+        "palindrome.go",
+        "paragraph.go",
+        "parchment.go",
+        "pivot.go",
+        "quickselect.go",
+        "regex.go",
+        "snorkel.go",
+        "uber.go",
+    ],
+    importpath = "github.com/thenakulchawla/shenanigans/go-dsa/random",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//go-dsa/trie",
+        "@com_github_thenakulchawla_parchment//:parchment",
+    ],
+)
+
+go_test(
+    name = "random_test",
+    srcs = [
+        "hard_test.go",
+        "job_test.go",
+        "random_test.go",
+    ],
+    embed = [":random"],
+    deps = ["@com_github_stretchr_testify//require"],
+)

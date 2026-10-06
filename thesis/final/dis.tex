@@ -1,0 +1,111 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage[square,numbers]{natbib}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{dcolumn,array}
+\usepackage{tocloft}
+\usepackage{asudis}
+\usepackage{listings}
+
+\usepackage[justification=centering]{caption}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+%-----------------------front matter
+\pagenumbering{roman}
+\title{ Digital Fountain for Multi-node Aggregation of Data in Blockchains }
+% chunks, torrent, raptor codes
+\author{Nakul Chawla}
+\degreeName{Master of Science}
+\paperType{Dissertation}
+\defensemonth{November}
+\defenseyear{2018}
+\gradmonth{December}
+\gradyear{2018}
+\chairOne{Dragan Boscovic}
+\chairTwo{Kasim Sel\c{c}uk Candan}
+\memberOne{Ming Zhao}
+% \memberTwo{Your second member}
+% \memberThree{Your third member}
+% \memberFour{Your fourth member}
+
+\maketitle
+\doublespace
+\include{abstract}
+\include{ack}
+\tableofcontents
+% This puts the word "Page" right justified above everything else.
+\addtocontents{toc}{~\hfill Page\par}
+% \dedicationpage{}
+
+
+% List of Tables
+%\newpage
+%\addcontentsline{toc}{part}{LIST OF TABLES}
+%\renewcommand{\cftlabel}{Table}
+%\listoftables
+%\addtocontents{lot}{Table~\hfill Page \par}
+
+% List of Figures
+\newpage
+\addcontentsline{toc}{part}{LIST OF FIGURES}
+\addtocontents{lof}{Figure~\hfill Page \par}
+\addtocontents{toc}{CHAPTER \par}
+\renewcommand{\cftlabel}{Figure}
+\listoffigures
+
+\clearpage
+
+% Asking LaTeX for a new page here guarantees that the LOF is on a separate page
+% after the TOC ends.
+% \newpage
+% Making the LOT and LOF "parts" rather than chapters gets them indented at
+% level -1 according to the chart: top of page 4 of the document at
+% ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/tocloft/tocloft.pdf
+% \addcontentsline{toc}{part}{LIST OF TABLES}
+% \renewcommand{\cftlabel}{Table}
+% \listoftables
+% % This gets the headers for the LOT right on the first page.  Subsequent pages
+% % are handled by the fancyhdr code in the asudis.sty file.
+% \addtocontents{lot}{Table~\hfill Page \par}
+% \newpage
+% \addcontentsline{toc}{part}{LIST OF FIGURES}
+% \addtocontents{toc}{CHAPTER \par}
+% \renewcommand{\cftlabel}{Figure}
+% This gets the headers for the LOF right on the first page.  Subsequent pages
+% are handled by the fancyhdr code in the asudis.sty file.
+% \addtocontents{lof}{Figure~\hfill Page \par}
+% \listoffigures
+%-----------------------body
+\doublespace
+\pagenumbering{arabic}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+% \include{chapter6}
+%-----------------------back matter
+{\singlespace
+% Making the references a "part" rather than a chapter gets it indented at
+% level -1 according to the chart: top of page 4 of the document at
+% ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/tocloft/tocloft.pdf
+\addcontentsline{toc}{part}{REFERENCES}
+\bibliographystyle{asudis}
+\bibliography{dis}}
+% \begin{thebibliography}{200}
+%     \bibitem{bitcoin} Nakamoto, Satoshi. "Bitcoin: A peer-to-peer electronic
+%         cash system." (2008).
+%     % \bibitem 
+%
+% \end{thebibliography}
+% \renewcommand{\chaptername}{APPENDIX}
+% \addtocontents{toc}{APPENDIX \par}
+\appendix
+% \include{appendix1}
+% \include{vita}
+\end{document}
+

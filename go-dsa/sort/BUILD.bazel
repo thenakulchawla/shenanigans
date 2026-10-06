@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "sort",
+    srcs = ["sort.go"],
+    importpath = "github.com/thenakulchawla/shenanigans/go-dsa/sort",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "sort_test",
+    srcs = ["sort_test.go"],
+    embed = [":sort"],
+    deps = ["@com_github_stretchr_testify//require"],
+)

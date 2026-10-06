@@ -1,0 +1,127 @@
+DASH cryptocurrency 
+
+The nodes connections stats are:
+Average Number of Connections Per Full Node = 10.5
+Average Number of Connections Per Miner = 21.25
+Average Number of Connections Per Master Node = 16
+Connections distribution: 
+1-5: 2(8.33333%)
+5-10: 2(8.33333%)
+10-15: 5(20.8333%)
+15-20: 9(37.5%)
+20-30: 6(25%)
+30-125: 0(0%)
+125-800: 0(0%)
+The nodes connections were created in 0.125425s.
+The minimum number of connections for each node is -1 and whereas the maximum is -1.
+The download speed for region NORTH_AMERICA = 28.4312 Mbps
+The download speed for region EUROPE = 49.4264 Mbps
+The upload speed for region NORTH_AMERICA = 47.3747 Mbps
+The upload speed for region EUROPE = 48.495 Mbps
+The nodes were created in 0.000248909s.
+The total number of links is 191 (0.0432401s).
+Internet stack installed in 0.00603509s.
+The Ip addresses have been assigned in 0.00667405s.
+Nodes distribution: 
+NORTH_AMERICA: 29.1667%
+EUROPE: 45.8333%
+SOUTH_AMERICA: 0%
+ASIA_PACIFIC: 25%
+JAPAN: 0%
+AUSTRALIA: 0%
+OTHER: 0%
+The applications have been setup.
+Setup time = 0.286157s
+Time/Block = 12.6404s
+Time/Block = 12.6477s
+The miner 0 with hash rate = 14.45% generated 16 blocks (19.7531%) with average block generation time = 3959s or 65min and 58.9998s and average size 7e+08 Bytes
+Total Blocks for miner 0 is 82
+Longest fork for miner 0 is 4
+Blocks in fork for miner 0 is 41
+The miner 2 with hash rate = 9.8% generated 10 blocks (12.3457%) with average block generation time = 7330.3s or 122min and 10.3028s and average size 7e+08 Bytes
+Total Blocks for miner 2 is 82
+Longest fork for miner 2 is 4
+Blocks in fork for miner 2 is 41
+The miner 5 with hash rate = 7.95% generated 10 blocks (12.3457%) with average block generation time = 7298.67s or 121min and 38.6725s and average size 7e+08 Bytes
+Total Blocks for miner 5 is 82
+Longest fork for miner 5 is 3
+Blocks in fork for miner 5 is 41
+The miner 7 with hash rate = 6.65% generated 8 blocks (9.87654%) with average block generation time = 9259.12s or 154min and 19.1222s and average size 7e+08 Bytes
+Total Blocks for miner 7 is 82
+Longest fork for miner 7 is 4
+Blocks in fork for miner 7 is 41
+The miner 11 with hash rate = 14.45% generated 11 blocks (13.5802%) with average block generation time = 6097.5s or 101min and 37.5021s and average size 7e+08 Bytes
+Total Blocks for miner 11 is 82
+Longest fork for miner 11 is 4
+Blocks in fork for miner 11 is 41
+The miner 19 with hash rate = 9.8% generated 8 blocks (9.87654%) with average block generation time = 9327.86s or 155min and 27.8647s and average size 7e+08 Bytes
+Total Blocks for miner 19 is 82
+Longest fork for miner 19 is 4
+Blocks in fork for miner 19 is 41
+The miner 20 with hash rate = 7.95% generated 11 blocks (13.4146%) with average block generation time = 6799.35s or 113min and 19.3458s and average size 7e+08 Bytes
+Total Blocks for miner 20 is 83
+Longest fork for miner 20 is 4
+Blocks in fork for miner 20 is 43
+The miner 22 with hash rate = 6.65% generated 8 blocks (9.87654%) with average block generation time = 9198.97s or 153min and 18.9722s and average size 7e+08 Bytes
+Total Blocks for miner 22 is 82
+Longest fork for miner 22 is 3
+Blocks in fork for miner 22 is 41
+
+Total Stats:
+Average Connections/node = 13.25
+Average Connections/miner = 21.25
+Mean Block Receive Time = 966.056 or 16min and 6.05583s
+Median Block Propagation Time = 5.09707s
+10% percentile of Block Propagation Time = 3.36962s
+25% percentile of Block Propagation Time = 4.46573s
+75% percentile of Block Propagation Time = 96.3775s
+90% percentile of Block Propagation Time = 223.079s
+Miners Mean Block Propagation Time = 3.84292s
+Miners Median Block Propagation Time = 4.10124s
+Mean Block Size = 7e+08 Bytes
+Total Blocks = 75.6667
+Stale Blocks = 19.4583 (25.7159%)
+The size of the longest fork was 3.58333 blocks
+There were in total 38 blocks in forks
+The average received INV messages were 137459 Bytes (2.76564e-05%)
+The average received GET_HEADERS messages were 86697 Bytes (1.74433e-05%)
+The average received HEADERS messages were 93654.2 Bytes (1.8843e-05%)
+The average received GET_DATA messages were 0 Bytes (0%)
+The average received GETRAPTOR messages were 253107 Bytes (5.09246e-05%)
+The average received BLOCK messages were 0 Bytes (0%)
+The average sent INV messages were 137459 Bytes (2.76564e-05%)
+The average sent GET_HEADERS messages were 86724 Bytes (1.74487e-05%)
+The average sent HEADERS messages were 93654.2 Bytes (1.8843e-05%)
+The average sent GET_DATA messages were 0 Bytes (0%)
+The average sent GETRAPTOR messages were 253164 Bytes (5.09361e-05%)
+The average sent BLOCK messages were 0 Bytes (0%)
+The average received EXT_INV messages were 0 Bytes (0%)
+The average received EXT_GET_HEADERS messages were 0 Bytes (0%)
+The average received EXT_HEADERS messages were 0 Bytes (0%)
+The average received EXT_GET_DATA messages were 0 Bytes (0%)
+The average received CHUNK messages were 0 Bytes (0%)
+The average sent EXT_INV messages were 0 Bytes (0%)
+The average sent EXT_GET_HEADERS messages were 0 Bytes (0%)
+The average sent EXT_HEADERS messages were 0 Bytes (0%)
+The average sent EXT_GET_DATA messages were 0 Bytes (0%)
+The average sent CHUNK messages were 0 Bytes (0%)
+Total average traffic due to INV messages = 274918 Bytes(5.53128e-05%)
+Total average traffic due to GET_HEADERS messages = 173421 Bytes(3.48919e-05%)
+Total average traffic due to HEADERS messages = 187308 Bytes(3.7686e-05%)
+Total average traffic due to GET_DATA messages = 0 Bytes(0%)
+Total average traffic due to BLOCK messages = 0 Bytes(0%)
+Total average traffic due to EXT_INV messages = 0 Bytes(0%)
+Total average traffic due to EXT_GET_HEADERS messages = 0 Bytes(0%)
+Total average traffic due to EXT_HEADERS messages = 0 Bytes(0%)
+Total average traffic due to EXT_GET_DATA messages = 0 Bytes(0%)
+Total average traffic due to CHUNK messages = 0 Bytes(0%)
+Total average traffic due to RAPTOR symbols= 4.97022e+11 Bytes(99.9998%)
+Total average traffic/node = 4.97023e+11 Bytes (355017 Kbps and 6.65656e+06 KB/block)
+Total average traffic due to GETRAPTOR = 506271 Bytes(0.000101861%)
+13.7789s per generated block
+The broadcast type was STANDARD.
+
+The simulation ran for 1029.11s simulating 1250mins. Performed 72.8786 faster than realtime.
+Setup time = 0.286157s
+It consisted of 24 nodes (8 miners) with minConnectionsPerNode = -1 and maxConnectionsPerNode = -1.
+The averageBlockGenIntervalMinutes was 2.5min.

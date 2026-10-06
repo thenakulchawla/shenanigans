@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "intervals",
+    srcs = ["intervals.go"],
+    importpath = "github.com/thenakulchawla/shenanigans/go-dsa/intervals",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "intervals_test",
+    srcs = ["intervals_test.go"],
+    embed = [":intervals"],
+    deps = ["@com_github_stretchr_testify//require"],
+)
