@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "arrays",
+    srcs = [
+        "binary_search.go",
+        "random.go",
+    ],
+    importpath = "github.com/thenakulchawla/shenanigans/go-dsa/arrays",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "arrays_test",
+    srcs = ["binary_search_test.go"],
+    embed = [":arrays"],
+    deps = ["@com_github_stretchr_testify//require"],
+)

@@ -1,0 +1,166 @@
+\chapter{Related Work and theory}
+This thesis is inspired from the delivery methods utilized by Content delivery
+Networks (CDNs) \citep{cdn3} \citep{cdn4} \citep{cdn5} \citep{cdn6} and torrent networks in order to relay large files on a network in an
+efficient manner. CDNs transmit large file over an adaptive relay network in the
+form of software or media distribution. In order to transmit these large files
+to multiple thousands of clients, the CDN caches symbols in its memory and opens
+up many fountains one for each client.\citep{cdn1} and \citep{cdn2} show
+efficient ways of using fountain codes to deliver a continuous stream
+of systematic symbols (Systematic symbols : The first k that are transmitted are the encoded
+data part). Assuming that a part of those k symbols are dropped, repair symbols
+are sent till the client collects a total of k ( original + repair) symbols and
+is able to reconstruct this data.
+
+Torrents on the other hand use a distributed file in order to find the nodes
+that can provide the information. This file is called the torrent file. When we
+know the nodes that can provide the information, we request them for the
+information. These nodes respond with a part of the file that they own. When all
+nodes provide the known information, the file is aggregated and reconstructed
+into the usable file.
+
+BitTorrents \citep{bittorrent1} \citep{cohem} were experimented to use fountain codes in 2012 by \citep{torrent-fountain}.
+However, the results in the case of torrents were almost comparable to the one
+with no coding technique used in the initial phase, but as enough seeders seed
+the data, the download with coding increases to a much faster rate. In our case,
+the block will be present with all the seeders, therefore the algorithm to
+find/disperse data is not employed as is the case with this paper.
+
+In the context of blockchains, miners who need to send the information to many
+nodes and in a fast and reliable manner, stream multiple fountains for each node
+that they are connected to. The full nodes use the torrent approach of
+aggregating data and upload the partial information.
+
+Blockchains, in the near future, in order to scale on chain will require to
+transmit large blocks over the network in a relatively small block interval.
+Since, CDNs effectively transmits their target data for efficient downloads, the
+idea can be abstracted and specific pieces of technology can be utilized in
+blockchains to synchronize large blocks over the decentralized distributed
+network.
+
+\section{Digital Fountains Codes}
+The common analogy to understand Fountain codes, is a water fountain. In order to fill a
+glass of water, one needs enough water, and not specific parts of water.
+Fountain codes work on the same principle. In order to reconstruct data, one
+needs enough symbols, here $k$. They can be a combination of source and repair
+symbols.
+
+Fountain codes are also known as rateless erasure codes. Near optimal erasure
+codes \citep{efficient-erasure} can transform $k$ symbol messages into practically infinitely encoded form
+i.e. they can generate an arbitrary amount of redundancy symbols that can be
+used for error correction.
+\textbf{Luby Transform} \citep{lt} codes are the first class of practical fountain codes
+which depend on bipartite graphs to trade reception overhead for encoding
+and decoding speed. 
+
+These codes employ a simple $\oplus $ based algorithm to encode and decode a
+message. And these codes adopt only a one way communication protocol which can
+directly be plugged as an alternative to \texttt{getdata} request explained in
+the coming chapters.
+
+\subsection{Encoding and Decoding of Luby Transform Codes}
+\begin{enumerate}
+    \item The sender encodes and sends packets of information.
+    \item The receiver evaluates each packet. If the packet has an error, it
+        discards that packet, otherwise it is saved as a message.
+    \item Eventually the receiver has enough valid packets to reconstruct the
+        message, on which an ACK is sent after transmission.
+\end{enumerate}
+
+\subsubsection{Luby Transform Encoding Process}
+\begin{enumerate}
+    \item
+        The message is divided into $n$ blocks of roughly equal length.
+    \item
+        The degree $ d, 1 <= d <= n $ is chosen at random.
+    \item
+        $ d$ blocks are chosen at random.
+    \item
+        If $M_i$ is the $i^th$ block of the message, data portion of the next
+        packet is $M_i1 \oplus M_i2 \oplus ... \oplus M_id $
+    \item
+        A prefix is appended to the encoded packet: defining $n,d$ and a list of
+        indices $i_1, i_2, .. i_d$.
+    \item
+        Some form of error detecting code (as simple as cyclic redundancy check)
+        is applied to the packet and transmitted.
+\end{enumerate}
+
+\subsubsection{Luby Transform Decoding Process}
+\begin{enumerate}
+    \item The packet is first checked, if the packet isn't clean or it has
+        already been sent, it is discarded.
+    \item 
+        If the cleanly received packet is of degree $d > 1$, it is first
+        processed against all the fully decoded blocks in the message queuing
+        area, then stored in a buffer area if its reduced degree is greater than
+        1.
+    \item
+        If $d=1$ is received, the packet is matched against all the packets of
+        $d>1$ residing in the buffer. If $d=2$ is received, it is reduced to
+        $d=1$ and moved to message queuing area.
+    \item When all the $n$ blocks are produced, the signal is transmitted.
+\end{enumerate}
+
+
+\subsection{Raptor Codes}
+Raptor codes are systematic fountain codes, where on receiving symbols the
+system can't identify whether these are original source or the repair symbols.
+
+The way these are generated is, from the original source $k$ symbols are
+constructed that can decode the entire source. Once we know that, the $k$ can
+decode the original, we generate more symbols from the original symbols again
+and call them the repair symbols. The receiver end now gets a degree
+distribution in such a way that we don't actually require symbols of degree 1 to
+decode all the original symbols.The degree distribution employed for RaptorQ is
+taken from a mix of 2 or more distributions. Any mix of source and repair symbols, as
+long as we have enough symbols ($k$), we can decode the source. 
+
+The idea that makes Raptor codes work they do, is deactivation decoding. In
+order to decode the entire data, we find a very small fraction of symbols
+through Giant Component analysis and which can be later discovered using
+Gaussian elimination as shown in \citep{raptor-dev} and \citep{raptorQ}, that if we assume to be decoded, we can decode the
+rest of the data.
+
+With this version improvised over time, if $k$ symbols are received at the
+receiver's end, there is a $.5\%$ chance of failure and is independent of $k$, and with every  overhead
+symbol, the chances of failure to decode reduces by a factor of 200 as stated in \citep{fountain-pres}. 
+ 
+Therefore, for the current time, the research on erasure channels have reached
+to optimality with the invention of raptorQ codes with a clever use of two or
+more degree distributions.
+
+The result on Raptor codes shows that a file on TCP that takes about 2min 15
+seconds to downloads, downloads in about 13 seconds.
+Therefore, this research is further applied to recover/reconstruct data in
+blockchain in order to understand its implications on block propagation.
+
+Some of the advantages of these codes, as stated in the paper \cite{multicast}
+
+\begin{enumerate}
+    \item \textbf{Scalable:} The server (miner) load remains constant if the
+        number of leeching nodes increase. In cases of miners relaying blocks on
+        asynchronous multicast connections, this will help increase the
+        performance in sending data.
+    \item \textbf{Reliable:} An exact copy of the original file is reconstructed
+        at the receiver end, which is very important, since we are dealing with
+        transactional data. 
+    \item \textbf{Reception Efficient:} The total number of packets that each
+        receiver needs to reconstruct  the file or data is minimal. In ideal
+        cases, the length of data to be received equals the length of aggregated
+        symbols. As we add more symbols, every symbols decreases the chance of
+        decode failure by 200.
+    \item \textbf{Time Efficient:}The time spent to generate and reconstruct the
+        packets is minimal. These symbols can be saved in a file and can be
+        directly broadcasted in order to respond to a request.
+    \item \textbf{Time Independent:} Receivers may initiate the download at their
+        discretion, implying that different receivers may start the download at
+        widely disparate times. Receivers may sporadically be interrupted and
+        continue the download at a later time.
+    \item \textbf{Server Independent:} Receivers may collect packets for the
+        file  from  one  or  more  servers  that  are  transmitting packets. No
+        coordination between servers should be required for this.
+    \item \textbf{Tolerant:} The protocol should tolerate a heterogeneous
+        population of receivers, especially a variety of end-to-end packet loss
+        rates and data rates.
+\end{enumerate}
+

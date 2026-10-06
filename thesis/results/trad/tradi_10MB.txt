@@ -1,0 +1,159 @@
+nohup: ignoring input
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Entering directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32m'build' finished successfully (0.606s)[0m
+[32m'build' finished successfully (0.610s)[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32m'build' finished successfully (0.628s)[0m
+[32m'build' finished successfully (0.635s)[0m
+[32m'build' finished successfully (0.630s)[0m
+[32m'build' finished successfully (0.648s)[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32mWaf: Leaving directory `/home/nchawla3/workspaceDash/ns-allinone-3.25/ns-3.25/build/optimized'[0m
+[32mBuild commands will be stored in build/optimized/compile_commands.json[0m
+[32m'build' finished successfully (0.649s)[0m
+[32m'build' finished successfully (0.633s)[0m
+DASH cryptocurrency 
+
+The nodes connections stats are:
+Average Number of Connections Per Full Node = 10.5
+Average Number of Connections Per Miner = 21.25
+Average Number of Connections Per Master Node = 16
+Connections distribution: 
+1-5: 2(8.33333%)
+5-10: 2(8.33333%)
+10-15: 5(20.8333%)
+15-20: 9(37.5%)
+20-30: 6(25%)
+30-125: 0(0%)
+125-800: 0(0%)
+The nodes connections were created in 0.126817s.
+The minimum number of connections for each node is -1 and whereas the maximum is -1.
+The download speed for region NORTH_AMERICA = 28.4312 Mbps
+The download speed for region EUROPE = 49.4264 Mbps
+The upload speed for region NORTH_AMERICA = 47.3747 Mbps
+The upload speed for region EUROPE = 48.495 Mbps
+The nodes were created in 0.000835896s.
+The total number of links is 191 (0.0446608s).
+Internet stack installed in 0.00672388s.
+The Ip addresses have been assigned in 0.00726199s.
+Nodes distribution: 
+NORTH_AMERICA: 29.1667%
+EUROPE: 45.8333%
+SOUTH_AMERICA: 0%
+ASIA_PACIFIC: 25%
+JAPAN: 0%
+AUSTRALIA: 0%
+OTHER: 0%
+The applications have been setup.
+Setup time = 0.231997s
+Time/Block = 0.190824s
+The miner 0 with hash rate = 14.45% generated 95 blocks (17.8236%) with average block generation time = 4630s or 77min and 9.99615s and average size 1e+07 Bytes
+Total Blocks for miner 0 is 534
+Longest fork for miner 0 is 1
+Blocks in fork for miner 0 is 18
+The miner 2 with hash rate = 9.8% generated 86 blocks (16.1351%) with average block generation time = 5198.84s or 86min and 38.8353s and average size 1e+07 Bytes
+Total Blocks for miner 2 is 534
+Longest fork for miner 2 is 1
+Blocks in fork for miner 2 is 18
+The miner 5 with hash rate = 7.95% generated 51 blocks (9.56848%) with average block generation time = 8663.08s or 144min and 23.0849s and average size 1e+07 Bytes
+Total Blocks for miner 5 is 534
+Longest fork for miner 5 is 1
+Blocks in fork for miner 5 is 18
+The miner 7 with hash rate = 6.65% generated 45 blocks (8.44278%) with average block generation time = 9739.43s or 162min and 19.4335s and average size 1e+07 Bytes
+Total Blocks for miner 7 is 534
+Longest fork for miner 7 is 1
+Blocks in fork for miner 7 is 18
+The miner 11 with hash rate = 14.45% generated 89 blocks (16.6979%) with average block generation time = 4902.81s or 81min and 42.814s and average size 1e+07 Bytes
+Total Blocks for miner 11 is 534
+Longest fork for miner 11 is 1
+Blocks in fork for miner 11 is 18
+The miner 19 with hash rate = 9.8% generated 62 blocks (11.6323%) with average block generation time = 7230.8s or 120min and 30.8036s and average size 1e+07 Bytes
+Total Blocks for miner 19 is 534
+Longest fork for miner 19 is 1
+Blocks in fork for miner 19 is 18
+The miner 20 with hash rate = 7.95% generated 52 blocks (9.7561%) with average block generation time = 8609.4s or 143min and 29.3986s and average size 1e+07 Bytes
+Total Blocks for miner 20 is 534
+Longest fork for miner 20 is 1
+Blocks in fork for miner 20 is 18
+The miner 22 with hash rate = 6.65% generated 53 blocks (9.94371%) with average block generation time = 8385.19s or 139min and 45.1916s and average size 1e+07 Bytes
+Total Blocks for miner 22 is 534
+Longest fork for miner 22 is 1
+Blocks in fork for miner 22 is 18
+
+Total Stats:
+Average Connections/node = 13.25
+Average Connections/miner = 21.25
+Mean Block Receive Time = 863.47 or 14min and 23.4703s
+Median Block Propagation Time = 9.9882s
+10% percentile of Block Propagation Time = 4.47176s
+25% percentile of Block Propagation Time = 8.42533s
+75% percentile of Block Propagation Time = 15.1887s
+90% percentile of Block Propagation Time = 27.3348s
+Miners Mean Block Propagation Time = 6.56108s
+Miners Median Block Propagation Time = 4.9863s
+Mean Block Size = 1e+07 Bytes
+Total Blocks = 520.167
+Stale Blocks = 8.75 (1.68215%)
+The size of the longest fork was 1 blocks
+There were in total 17.5 blocks in forks
+The average received INV messages were 1.01488e+06 Bytes (0.000925129%)
+The average received GET_HEADERS messages were 942455 Bytes (0.000859107%)
+The average received HEADERS messages were 1.01808e+06 Bytes (0.000928047%)
+The average received GET_DATA messages were 756291 Bytes (0.000689407%)
+The average received GETRAPTOR messages were 0 Bytes (0%)
+The average received BLOCK messages were 5.48472e+10 Bytes (49.9966%)
+The average sent INV messages were 1.01488e+06 Bytes (0.000925129%)
+The average sent GET_HEADERS messages were 942476 Bytes (0.000859125%)
+The average sent HEADERS messages were 1.01808e+06 Bytes (0.000928047%)
+The average sent GET_DATA messages were 756308 Bytes (0.000689421%)
+The average sent GETRAPTOR messages were 0 Bytes (0%)
+The average sent BLOCK messages were 5.48472e+10 Bytes (49.9966%)
+The average received EXT_INV messages were 0 Bytes (0%)
+The average received EXT_GET_HEADERS messages were 0 Bytes (0%)
+The average received EXT_HEADERS messages were 0 Bytes (0%)
+The average received EXT_GET_DATA messages were 0 Bytes (0%)
+The average received CHUNK messages were 0 Bytes (0%)
+The average sent EXT_INV messages were 0 Bytes (0%)
+The average sent EXT_GET_HEADERS messages were 0 Bytes (0%)
+The average sent EXT_HEADERS messages were 0 Bytes (0%)
+The average sent EXT_GET_DATA messages were 0 Bytes (0%)
+The average sent CHUNK messages were 0 Bytes (0%)
+Total average traffic due to INV messages = 2.02977e+06 Bytes(0.00185026%)
+Total average traffic due to GET_HEADERS messages = 1.88493e+06 Bytes(0.00171823%)
+Total average traffic due to HEADERS messages = 2.03617e+06 Bytes(0.00185609%)
+Total average traffic due to GET_DATA messages = 1.5126e+06 Bytes(0.00137883%)
+Total average traffic due to BLOCK messages = 1.09694e+11 Bytes(99.9932%)
+Total average traffic due to EXT_INV messages = 0 Bytes(0%)
+Total average traffic due to EXT_GET_HEADERS messages = 0 Bytes(0%)
+Total average traffic due to EXT_HEADERS messages = 0 Bytes(0%)
+Total average traffic due to EXT_GET_DATA messages = 0 Bytes(0%)
+Total average traffic due to CHUNK messages = 0 Bytes(0%)
+Total average traffic due to RAPTOR symbols= 0 Bytes(0%)
+Total average traffic/node = 1.09702e+11 Bytes (11269.5 Kbps and 211304 KB/block)
+Total average traffic due to GETRAPTOR = 0 Bytes(0%)
+0.196215s per generated block
+The broadcast type was STANDARD.
+
+The simulation ran for 102.1s simulating 7500mins. Performed 4407.43 faster than realtime.
+Setup time = 0.231997s
+It consisted of 24 nodes (8 miners) with minConnectionsPerNode = -1 and maxConnectionsPerNode = -1.
+The averageBlockGenIntervalMinutes was 2.5min.

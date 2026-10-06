@@ -1,0 +1,30 @@
+package random
+
+func isMatch(s string, p string) bool {
+
+	if len(p) == 0 {
+		return len(s) == 0
+	}
+
+	firstMatch := len(s) > 0 && (rune(p[0]) == rune(s[0]) || rune(p[0]) == '.')
+
+	if len(p) >= 0 && p[1] == '*' {
+		return isMatch(s, p[2:]) || (firstMatch && isMatch(s[1:], p))
+	}
+
+	return firstMatch && isMatch(s[1:], p[1:])
+
+}
+
+func matchWithoutKleene(s, p string) bool {
+	if len(p) == 0 {
+		return len(s) == 0
+	}
+
+	firstMatch := false
+	if len(s) != 0 && rune(p[0]) == rune(s[0]) || p[0] == '.' {
+		firstMatch = true
+	}
+
+	return firstMatch && matchWithoutKleene(s[1:], p[1:])
+}

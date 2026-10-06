@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+
+%Remove below between comments to remove DRAFT watermark
+% \usepackage[printwatermark]{xwatermark}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+% \newwatermark[allpages,color=red!50,angle=45,scale=3,xpos=0,ypos=0]{DRAFT}
+%Remove above this comment to remove DRAFT watermark
+
+\title{Dash Simulator}
+\author{Nakul Chawla}
+% \date{February 2018}
+\begin{document}
+
+\maketitle
+
+% \begin{abstract}
+% Not long after the introduction of Nakamoto networks such as Bitcoin \cite{Nak}, there has been much debate about the possibility and ability of scaling these networks.  We estimate the throughput of these networks under a variety of different configurations and implementations.  Of particular emphasis, we study how different block propagation techniques effect this throughput limit.
+% \end{abstract}
+
+\section{Introduction}
+Our Bitcoin simulator is an NS3 based
+simulator that was originally built for the research shown in
+\cite{security}. The simulator demonstrates the workings of Bitcoin, Dogecoin and
+Litecoin, but bases its research on each block being the fundamental/rudimentary component. 
+
+Below are the modifications that have been done to the bitcoin simulator in order for us to experiment newer propagation
+technologies.
+
+\section{Modifications}
+We found that simulations that merely went down to the block level were not detailed enough for our purpose.  In order to reliably model a consensus network with block propagation speedups such as compact or xthin we must understand these networks down at the level of transactions.
+
+In order to understand the network at the level of transactions, we modeled generation of transactions using a normal
+distribution. Each node is has a transaction generator that creates a random transaction with a piecewise constant
+distribution and hashes that data.
+
+There are 3 types of nodes : Full nodes, Miners and Masternodes. Masternode in the current simulator is
+not a separate class but a check on full node.
+The network is randomly distributed with full nodes, masternodes and the miners. All the miners in the network are
+connected to each other which simulates the real world network.
+When establishing the connections between nodes, we create point-to-point channels between them, which abstracts away
+any intermediate devices (routes, switches, etc). These channels have two characteristics: 
+\begin{enumerate}
+    \item latency
+    \item bandwidth
+\end{enumerate}
+
+Mining pools typically maintain private peering connections among
+themselves—which we capture in our simulations. Besides direct peering, a
+number of mining pools nowadays participate in Matt Corallo’s relay network
+\cite{matt} that is operated independently of the default Bitcoin P2P overlay network.
+
+
+In short, below are the modifications done to the bitcoin-simulator for it to run the current dash-simulations:
+
+\begin{enumerate}
+    \item Transactions are added in order to add traffic and understand propagations in more detail.
+    \item Every node now has it's own mempool in order to test set reconciliation for xthin propagation.
+    \item Compact block propagation is added.
+    \item Extreme thin block propagation is added.
+    \item Masternode (bool) is added to the full-node. Because this is network propation, the bandwidth is the only
+        differentiating factor between a full node and masternode. 
+    \item Bloom filter using Murmur Hash is added in order to test xthin.
+    \item Capability to test x-11 hashing is added, although it doesn't add value to propagation. 
+    \item Fill Block - This parameter if true, fills the block with transactions to its maximum capacity. If this is set
+        to false, the simulator uses a piecewise constant distribution to generate the next block size and adds
+        transactions limiting to the new block size. 
+\end{enumerate}
+
+The resulting simulator code is available at \cite{sim}.  
+
+\section{Parameters}
+The simulator takes in the below given parameters:
+
+\begin{enumerate}
+    \item Block Size
+    \item Block interval
+    \item Propagation type
+    \item Number of blocks
+    \item Fill Block  - The block is filled to capacity if fillBlock=true.
+\end{enumerate}
+
+\section{Results and Findings}
+
+We ran multiple experiments in order to find how to scale the dash network for future:
+
+\subsection{Orphan rate based on type of block}
+We tested 3 types of blocks :
+
+\begin{enumerate}
+    \item Traditional
+    \item Compact : BIP 152
+    \item Extreme Thin Blocks (xthin) : BUIP 10
+\end{enumerate}
+
+The simulations were run with different network sizes and different block sizes.
+Through these simulations, it was realized that both compact and xthin blocks can support the Dash network with a
+capacity an order of magnitude larger than the traditional block propagation.
+
+However, the important decision is to compare the propagation between Compact and xthin blocks and which will work
+better for the future of Dash network.
+
+The first set of experiments was run on a network of size 24 with 16 mining pools and 8 MasterNodes.
+For this small network, compact blocks at 160 MB resulted in an orphan rate in the ballpark of 20\% where as xthin
+blocks produced orphan rates less than 5\% for block size 320MB. 
+
+In order to test the current network size, we ran experiments with 6000 nodes comprising of 8 mining pools and 5000
+masternodes. Compact blocks produced consistently high orphan rates where as xthin ranged between 3\% and 15\%. 
+
+Since, there is high variance in orphan rates for xthin, with some simulations resulting in lower orphan rates as
+compared to compact blocks which consistently produced higher orphan rates, it is currently the best propagation method for dash to adopt.
+
+The results of the simulator are produced in the form of log-files that can be found at \cite{results}.
+
+\subsection{Role of Masternodes}
+The current dash network is a 2-tier network with Masternodes that maintain higher hardware capabilities for better
+propagation and, faster transaction verification and validation.
+
+We know that Masternodes add two features to the dash network:
+
+\begin{enumerate}
+    \item Privatesend
+    \item Instantsend
+\end{enumerate}
+
+Both of these are not available on any other network except for dash. But what we realized through our simulations that
+for block sizes in the ballpark of 10MB, Masternodes don't add significant value to the network in reducing orphan rate.
+
+The two major reasons to that is :
+
+\begin{enumerate}
+    \item The hardware specification of a full-node is capable of verifying and validating transactions at a fast
+        pace for block sizes in the neighbourhood of 10MB , orphan rate is not affected. 
+    \item For bandwidth, we ran an experiment with all masternodes running at 100MB per second bandwidth, and the orphan
+        rate did not change significantly.
+\end{enumerate}
+
+Larger block sizes close to 500MB may be affected by masternodes, especially in propagation if the network requirements
+are maintained at 1GB per second bandwidth with higher up-time.  
+
+  \bibliographystyle{alpha}
+  \bibliography{bib.bib}
+\end{document}

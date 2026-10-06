@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "design",
+    srcs = [
+        "datastore.go",
+        "lru.go",
+    ],
+    importpath = "github.com/thenakulchawla/shenanigans/go-dsa/design",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "design_test",
+    srcs = [
+        "datastore_test.go",
+        "lru_test.go",
+    ],
+    embed = [":design"],
+    deps = ["@com_github_stretchr_testify//require"],
+)

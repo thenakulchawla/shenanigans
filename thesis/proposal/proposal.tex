@@ -1,0 +1,458 @@
+
+% \documentclass[conference]{IEEEtran}
+% \documentclass[journal,12pt,onecolumn,finalnofoot,]{IEEEtran}
+\documentclass[journal,12pt,onecolumn,draftclsnofoot,]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote.
+% If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{enumitem}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{ Comparison and Evaluation of  state-of-art Blockchain Scaling
+Solutions}
+
+\author{\IEEEauthorblockN{Nakul Chawla} \\
+\IEEEauthorblockA{\textit{Computer Science} \\
+\textit{Arizona State University}\\
+nchawla3@asu.edu}
+}
+
+
+% \listadd{\committeemember}{Member Name}
+
+
+\maketitle
+
+\centerline{Thesis Proposal} 
+\centerline{for the Master's Degree in Computer Science}
+
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+\hfill \break
+
+\centerline{\textbf{Approved by:} }
+\centerline{Selcuk K. Candan (Chair)} 
+\centerline{Dragan Boscovic (Chair) }
+
+\newpage
+
+
+\begin{IEEEkeywords}
+    Blockchain, Scalability, XThin Blocks, Compact Blocks,Graphene Blocks, Lightning Network, Plasma, Bitcoin,
+    Ethereum, Dash
+\end{IEEEkeywords}
+
+\section{Introduction}
+In 2009, Bitcoin\cite{bitcoin} introduced the first blockchain which is an
+append only database that stores transactions. Blockchain maintains the
+distributed database in a decentralized network aiming to solve the Byzantine
+Generals Problem \cite{bgp}. Byzantine Generals Problem is a problem in
+distributed computing in which two generals have to come to an agreement on
+whether to attack or not, but have only message passing as a way of
+communicating. This problem in Finance is extrapolated to digital money by
+introducing malicious nodes into the system who would want to double spend their
+money. In a typical banking system, the bank acts as the central node which
+validates every transaction that is made by the user. However, in a peer-to-peer
+system, where no central node validates the transaction, malicious/byzantine behaviour is
+easy to perform. 
+Bitcoin solves this problem by introducing a shared public ledger called
+blockchain, in which all confirmed transactions are included.   
+
+\subsection{Process}
+Nodes on the bitcoin network arrange themselves in a decentralized manner
+connecting to a anonymous peers to either previously known IP
+addresses or by DNS seeds. There are several types of nodes: Miners, 
+Full-Nodes and SPV (Simplified Payment Verification) wallets. Full-nodes and SPV
+clients are required to propagate and verify the transactions, where as miners
+are required to verify and add transactions to a block and add it to the
+blockchain. Once valid a block propagates through the network, it is then added to the
+blockchain by mutual consensus of the network.
+
+\subsection{Problems}
+Blockchain currently faces a number of limitations that are listed below:
+
+\subsubsection{Scalability}
+An arbitrary time interval of ten minutes was set between adding two blocks when
+bitcoin was introduced. Along with a ten minute interval, a 1MB block size was
+set later after a DoS attack in 2010. These parameters have proven to constrain
+the throughput of bitcoin network to 3-7 transactions per second. There have
+been several techniques to change this, but none have yet proved to scale it to
+the current fiat currency vendors VISA that is approximately 24k transactions
+per second during peak.
+
+\subsubsection{Storage}
+Over the time as the size of blockchain grows, individual contributors i.e. the
+full nodes who volunteer verification of the block will face trouble validating
+each transaction on the network.The current size of bitcoin blockchain in close
+to 160GB, which all full nodes store on their personal storage devices. As
+blockchains get widely accepted, and replaces the current credit/debit cards,
+the estimated size of blockchain per year required will be ~400 terabytes as
+stated in \cite{lightning}, which
+individual volunteer nodes won't be able to afford. 
+
+
+% \section{Background And Related Work}
+%
+% \subsection{Background}
+%     Blockchain is a decentralized, tamper-proof digital ledger technology that
+%     is transforming transaction prospects for many industries. In addition to
+%     being the foundation of cryptocurrencies like Ethereum, the blockchain
+%     structure, which consists of linked blocks of information, allows for direct
+%     transactions across a network of computers without the need for a central
+%     authority. The Ethereum network consists of three kinds of nodes:
+%     \textbf{full nodes}, \textbf{light-weight nodes } and \textbf{miners}. Nodes
+%     save the complete blockchain and have two main functions: 
+%     \begin{enumerate}
+%         \item to validate transactions
+%         \item to propagate transactions and blocks through the network
+%     \end{enumerate} 
+%     Although full nodes validate transactions by checking their inputs and
+%     outputs, light-weight nodes verify transactions by SPV, or by requesting random
+%     chunks of a block and using the merkle root to verify each chunk. This
+%     verification technique relies on trusting a full node, or whichever node is sending
+%     data. This can be dangerous, because a malicious node can withhold small
+%     amounts of data and can get unnoticed by many light clients. The network
+%     becomes much more trustworthy if the number of full nodes are a majority
+%     since data is always verified. As blockchain technology becomes increasingly
+%     adopted, the storage requirements are also increasing for each individual
+%     node. This
+%     increase in infrastructure requirement forces volunteer nodes to move to
+%     light weight nodes. This harms the network in two ways :
+%     \begin{enumerate}
+%         \item The network gets more centralized to people who can afford
+%             supercomputers
+%         \item The trust on the network weakens as most transactions are not
+%             completely validated by full nodes
+%     \end{enumerate}
+%     In this project, we want to introduce a new kind of node that saves only a
+%     part of the blockchain; thus, reducing the storage requirement while also
+%     validating each transaction that is a part of the block. This will introduce
+%     the following advantages to the network:
+%     \begin{enumerate}
+%         \item The trust on the network will be high as the nodes will validate
+%             each transaction fully
+%         \item Randomizing block storage in such a way that transactions are
+%             fully validated by a small part of the network leading to multiple
+%             transactions being validated in parallel.
+%     \end{enumerate}
+%     We will be focusing only on the first advantage as a part of this project,
+%     the second will remain a future work.
+%
+% \subsection{Related Work}
+
+\section{Proposed Solutions}
+Below are some of the solutions that are being adopted slowly as potential solution.
+
+\subsection{On-chain scaling}
+
+\subsubsection{Increasing Block Size}
+A very naive approach of solving the scalability problem is to directly increase
+the block size to what is currently required to handle all transactions in the
+mempool. The fallbacks of this plan however can affect the network security and
+can end up being an economical disaster by following means:
+
+\begin{enumerate}
+    \item Increasing block size directly increases the percentage of orphan
+        blocks because of the delay of propagating the block through the network
+        in the given block interval.More orphan rates harm the economic
+        incentive of miners. Discouraging new miners can eventually centralize
+        the network.
+
+    \item Increasing block size directly affects the size of blockchain that is
+        stored by each node of the network. A substantial increase in the size
+        of blockchain discourages volunteer full-nodes on the network and
+        centralizes the propagation to parties that can afford supercomputers.
+
+    \item Increasing block size linearly only increases the transaction count
+        linearly. In order to match up to VISA like vendors, there needs to be
+        an exponential rise in the number of transactions. 
+
+\end{enumerate}
+
+\subsubsection{Masternodes}
+Dash \cite{dash} coin was introduced as Xcoin in the year 2014. It introduced the first
+on-chain multi-tier scaling solution by introducing what they call Masternodes.
+These masternodes are not volunteer nodes and require to have a higher
+configuration (bandwidth and processing). In order to fulfill these
+requirements, they are awarded 45\% of the mining reward as compensation. The masternodes add
+reliability to the network, and because of the higher configuration push the
+network to produce higher throughput.The block interval is also reduced to
+two minutes and 30 seconds and recently increased the block size to 2MB. This
+arrangement helps in packing double the transaction amount in a much lesser time
+which increases the throughput 8 fold when the network will reach its peak.
+
+\subsubsection{Segregated Witness \cite{segwit}}
+Segregated Witness, also called SegWit, is a software update that tries to fix
+transaction malleability which had been a known weakness in bitcoin
+security.This method segregates the signature data from the original data. 
+Although, this method wasn't directly aimed at solving scalability, it reduces the
+size of each transaction, thus packing more transactions into the block. 
+
+\subsubsection{Compact \cite{compact}, XThin \cite{xthin} and Graphene blocks
+\cite{graphene} }
+Since increasing block size has direct effect on centralization of the network,
+a more novel approach is to utilize the fact that the nodes on the network
+already have most of the information that is needed for the new block to be
+formed. All that is needed is the metadata for the other nodes to form this new
+block. \textbf{Compact blocks} instead of sending the complete block, send only
+the short transaction IDs that are 6 bytes each in the block along with the
+coinbase transaction. This compresses the block substantially from a 1MB to a few
+kBs. Since the information that needs to be propagated is much smaller now, more
+information can be packed in the same 1MB block, effectively increasing the
+throughput of the network. \textbf{XThin blocks} use the same technique of
+compression, but instead of sending shortIDs of the transactions, sends a bloom
+filter of the complete mempool. From this bloom filter sketch, the second node
+can easily know what information the node does not have and only send that
+information. Since, bloom filters have a false positive rate that increases as
+the amount of data increases in it, \textbf{Graphene blocks} along with a bloom
+filter also send an inverted bloom lookup table (IBLT) in order to check the
+false positive rate and correctly form the group of transactions that are
+included in the block being propagated.
+
+\subsection{Off-chain scaling}
+\subsubsection{Bitcoin Lightning Network \cite{lightning}}
+Bitcoin lightning network is based on the idea of bidirectional off-chain
+payment channels. Two participants create a ledger entry on the blockchain which
+requires both participants to sign off on any spending of funds.
+\cite{lightning} explains the protocol as "Both parties
+create transactions which refund the ledger entry to their individual
+allocation, but do not broadcast them to the blockchain. They can update their
+individual allocations for the ledger entry by creating many transactions
+spending from the current ledger entry output. Only the most recent version is
+valid, which is enforced by blockchain-parsable smart-contract scripting. This
+entry can be closed out at any time by either party without any trust or
+custodianship by broadcasting the most recent version to the blockchain."
+
+Once these channels are made by multiple parties, a node can find an already
+existing path to pay another node thus avoiding the need to go on chain and
+explicitly adding transactions to a block. Since, the nodes on the path can't be
+trusted, atomicity is introduced with decrementing Hashed time-locks.
+
+This results in making payments off-chain without any constraints in a limitless
+manner. In an event of discrepancy, any one party can broadcast the previous transaction
+to the blockchain adding it to the immutable database that can't be changed. The
+malicious node, however is penalized with all funds in the transaction to be
+transferred to the other party, thus preventing byzantine failures.
+
+
+\subsubsection{Ethereum Plasma \cite{plasma}} 
+Ethereum\cite{ethY} \cite{ethW} currently faces problem of scalability with the number of users on its
+platform. In order to scale to a size where Ethereum can handle API requests as
+large 100k per second, the plasma whitepaper details a way to form side chains
+called the plasma chains. Plasma is composed of two key parts:
+
+\begin{enumerate}
+    \item Reframing all blockchain computation into a set of MapReduce functions
+    \item Optional method of Proof-of-Stake token bonding that realizes Nakamoto
+        consensus which will penalize malicious actors. 
+\end{enumerate}
+
+A tree hierarchy of many blockchains will be formed, that treats each individual
+branch as a blockchain that is enforceable with the main chain and MapReducable
+computation committed into merkle proofs.
+
+\section{Intent}
+The thesis intention is to evaluate the solutions provided above by implementing
+their respective simulator and emulator. The specific criteria for evaluating
+each technique is listed below in the section Evaluation Criteria.
+
+\subsection{Components}
+The thesis will encompass two projects:
+
+    \subsubsection{The Simulator}
+    \begin{enumerate}[label=(\alph*)]
+    \item 
+            The bitcoin simulator is an NS3 based
+            simulator that was originally built for the research shown in
+            \cite{security}. The simulator demonstrates the working of bitcoin, dogecoin and
+            litecoin, but bases it's research on block being the fundamental/rudimentary component. 
+
+        \item 
+            However, blockchain is based on the idea of transactions. Everything
+            is treated in terms of UTXOs, i.e. unspent transaction outputs. The
+            current simulator introduces the idea of transactions and mempool
+            (transactions that haven't yet been included in the block). 
+
+        \item Introduction of Mempool enables us to implement and test the newer
+            block propagation methods (COMPACT, XTHIN and GRAPHENE). 
+
+        \item Orphan rates in the network determine whether it is profitable to
+            mine blocks on a particular blockchain network.
+
+        \item With addition of newer propagation methods on the simulator, we
+            can now test bigger block sizes that original networks can't now.
+            One of the examples of the current simulations being a 10MB standard
+            block results in 90\% orphan rate but when run using a compact block,
+            a 0-1\% orphan rate was noticed. These kind of scenarios can't be
+            tested on the original main chain since block size changes require a
+            hard fork and are not reversible.
+
+        \item Higher orphan rates, i.e. 2-3\% can still be profitable for miners,
+            which implies that the block size can be further adjusted to a much
+            larger size which we are in the process of determining. 
+
+        \item The above results are for dash blockchain that has a block interval
+            for 2.5 minutes. In blockchain networks that have a higher block
+            interval, even larger block sizes can be propagated without
+            significant orphan rates. 
+
+        \item Through this simulator, when a saturated block size is retrieved
+            with acceptable orphan rate, a new chain can be forked for the most
+            optimized results. 
+
+    \end{enumerate}
+
+    \subsubsection{The Emulator: } 
+    \begin{enumerate}[label=(\alph*)]
+
+        \item The future work for of the project is to build an emulator that
+            will help implement off-chain state-of-the-art scaling methods and
+            open ease of performing experiments for future ASU blockchain
+            research projects.The emulator will be based on Hyper-V
+            Kubernetes/Docker containers that will act as full-nodes, SPV and
+            miners. The mining since it is compute intensive and provides
+            deterministic results will be simulated by
+            piecewise\_constant\_distribution by sampling the current data from
+            Dash/Ethereum block explorers. 
+
+        \item The prime focus of the emulator will be to test three techniques:
+            bitcoin lightning network, Ethereum plasma and Sharding. 
+
+        \item The lightning network is kicked off on the Bitcoin chain but only
+            some group of users are using it. Plasma on the contrary is only
+            theoretical in concept and Ethereum organization is working on
+            funding organizations for the help. 
+
+        \item The lightning network and plasma are both based on same grounds,
+            and both claim billions of transactions as throughput.
+
+        \item The aim of the emulator is to test 3 major hypothesis and 1 future
+            work:
+            \begin{enumerate}
+                \item Unlimited transactions on the network don't necessarily
+                    mean unlimited users. The network size bottleneck needs to
+                    be calculated to figure out the number of users that can
+                    comfirtably use the network without having high transaction
+                    fee.
+
+                \item In order to have billions of transactions, millions of
+                    payment channels will be opened, which will bottleneck the
+                    system. Finding the correlation between users, payment
+                    channels and transactions that can be on the system.
+
+                \item Although, billions of payments can happen on the lightning
+                    network, all transactions are enforceable on the main
+                    blockchain. Having a high throughput system base on a low
+                    throughput system can lead to catastrophic scenarios. The
+                    hypothesis that needs to be tested is for disaster recovery,
+                    where if multiple payment channels close at once, if the
+                    main chain will bottleneck based on the number of
+                    transactions it will have to process. 
+
+                \item Efficient routing between n-to-m endpoints means that the
+                    most efficient (in terms of minimizing) the number of hops
+                    configuration of the network would be large payment channel
+                    hubs that would have open channels to everyone. Efficient
+                    payment hubs lead to pseudo banks and existing banks would
+                    be best suitable to run these payment hubs. Double spending
+                    in lightning network is prevented by continuous monitoring
+                    which is the current security model of the banks rather than
+                    the original bitcoin network.
+            \end{enumerate}
+
+    \end{enumerate}
+
+
+\section{Implementation Plan}
+The simulator mentioned in the above component list is already implemented and
+validated with all features in place. The simulator was first validated to the
+real world parameters, which are: block interval and block size that affect
+orphan rate and propagation time.
+
+The emulator implementation schedule is listed below:    
+
+\subsection{Proposed Schedule}
+\begin{tabular}{|p{5cm}||p{5cm}||p{5cm}|}
+    \hline
+    \textbf{Task} & \textbf{Begin date} & \textbf{End date} \\
+    \hline
+    Setting up the Dash/Ethereum/Bitcoin system on Kubernetes & March 14th, 2018 & March 28th, 2018 \\
+    \hline
+    Testing scenarios for the above Blockchains & March 28th, 2018 & April 7th, 2018 \\
+    \hline
+    Building lightning network & April 7th, 2018 & April 28th, 2018 \\
+    \hline
+    Building Plasma & April 28th, 2018 & May 20th, 2018 \\
+    \hline
+    Testing and Results & May 21st,2018 & July 21st, 2018 \\
+    \hline
+\end{tabular}
+
+\section{Evaluation Criteria}
+The specific evaluation criteria for thesis should be based on the below
+identified metrics:
+
+\begin{enumerate}
+    \item \textbf{Throughput: } The maximum throughput that can be achieved
+        without having an orphan rate more than 0-2\%. Alternatively, the block
+        size and orphan rate correlation can be calculated with respect to the
+        total hash power of the network and the performance can be maximized. 
+
+    \item \textbf{Scalability: } How many nodes can function on the bitcoin/dash
+        network with sufficiently high block sizes to keep the throughput
+        between 1-2\% variance from the maximum throughput. 
+        What is the number of payment channels that can function without having
+        bottlenecks or centralization. 
+
+    % \item \textbf{Security Trade-offs:} What security trade offs does the
+    %     proposed technique do, in order to reach this peak?
+    % \item \textbf{Feature trade off:} What beneficial features does the proposed
+    %     technique let go in order to reach the peak performance?
+    % \item \textbf{Economic Incentive:} What orphan rate can be allowed on the
+    %     network as a correlation of 
+
+\end{enumerate}
+
+\begin{thebibliography}{00}
+    \bibitem{bitcoin} Nakamoto, Satoshi. "Bitcoin: A peer-to-peer electronic cash
+        system." (2008).
+    \bibitem{ethY} Wood, Gavin. "Ethereum: A secure decentralised generalised
+        transaction ledger." Ethereum Project Yellow Paper 151 (2014): 1-32.
+    \bibitem{ethW} Buterin, Vitalik. "Ethereum white paper." GitHub repository
+        (2013).
+    \bibitem{bgp} Lamport, L., Shostak, R., & Pease, M. (1982). The Byzantine
+        generals problem. ACM Transactions on Programming Languages and Systems
+        (TOPLAS), 4(3), 382-401.
+    \bibitem{security} Gervais, Arthur, et al. "On the security and performance
+        of proof of work blockchains." Proceedings of the 2016 ACM SIGSAC
+        Conference on Computer and Communications Security. ACM, 2016.
+    \bibitem{plasma} Poon, Joseph, and Vitalik Buterin. "Plasma: Scalable
+        Autonomous Smart Contracts." White paper (2017).
+    \bibitem{lightning} Poon, Joseph, and Thaddeus Dryja. "The bitcoin lightning
+        network: Scalable off-chain instant payments." draft version 0.5 9
+        (2016): 14.
+    \bibitem{xthin} Peter Tschipper, BUIP010: Xtreme Thinblocks, 2016, Github
+        Repository, https://github.com/BitcoinUnlimited/BUIP/blob/master/010.mediawiki  
+    \bibitem{compact} Matt Corallo, Compact Block Relay, 2016, Github
+        Repository, https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki  
+    \bibitem{graphene} Ozisik, A. Pinar, et al. "Graphene: A New Protocol for
+        Block Propagation Using Set Reconciliation." Data Privacy Management,
+        Cryptocurrencies and Blockchain Technology. Springer, Cham, 2017.
+        420-428.
+    \bibitem{dash} Duffield, Evan, and Daniel Diaz. "Dash: A PrivacyCentric
+        CryptoCurrency." (2014).
+    \bibitem{segwit} Eric Lombrozo, Johnson Lau and Pieter Wuille, Segregated
+        Witness (Consensus layer), 2015, Github Repository, https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki 
+\end{thebibliography}
+
+\end{document}

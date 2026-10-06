@@ -1,0 +1,41 @@
+\chapter{Conclusion}
+Analyzing the above results, we can conclude that utilizing data aggregation
+techniques on a node for data propagation works better than syncing block using
+one peer.
+It must be noted that full nodes are personal machines that do not have high
+bandwidth. They get several advantages when only relaying symbols instead of the
+full blocks:
+
+\begin{enumerate}
+    \item Miners have the capability of multi-casting. In the experiments, we
+        have used TCP connections, but we have scheduled these uploads
+        simultaneously. They can simultaneously serve large blocks to many nodes by
+        continuous asynchronous streams, which wasn't possible in the traditional relay.
+    \item The data received by a full node is downloaded through multiple peers in parallel which results in faster downloads.
+\end{enumerate}
+
+The above advantages, help nodes to propagate large blocks faster. 
+Although, The current propagation techniques result in much faster propagation and
+lower orphan rates. Those (compact, XThin, Graphene) techniques have been tested on smaller blocks and they are highly dependent on memory pool synchronization. If memory pools (of the peers propagating blocks) do not synchronize, the methods fail to relay blocks faster and rely back on the traditional propagation. This thesis is intended to put the idea that today's state of art of propagation techniques (compact, XThin and Graphene) can take advantage of fountain codes for relay as a complimentary technology to make propagation faster. 
+
+\section{Future Work}
+
+We have seen from the above experiments that the orphan rate is significantly
+reduced when sending the Fountain codes instead of leeching the block from a
+single client. The orphan rate for a 100 MB blocks reduces from 17\% to 9\% 
+which is very profitable for a miner.  
+We can also conclude that the network is able to maintain consensus upto 600MB blocks as compared to 100MB in traditional.
+We also know that orphan rates is much lower and transmission speed is higher in
+techniques like Compact blocks, XThin blocks and graphene blocks because they
+efficiently reduce the payload while sending the draft/sketch of the whole
+block. The one major area where fountain codes can make these techniques better
+is when there is a need for re-transmission of block data (\texttt{blocktxn}
+,\texttt{xblocktx}
+and \texttt{grblocktx} which block transactions for compact block, xthin blocks and
+graphene blocks respectively).
+
+In order to show the advantage of using fountain codes in increasing the
+performance of compact, XThin and Graphene blocks, the protocol will be more
+complicated because memory pool of each nodes are being used for encoding and
+decoding. 
+

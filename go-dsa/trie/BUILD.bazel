@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "trie",
+    srcs = ["trie.go"],
+    importpath = "github.com/thenakulchawla/shenanigans/go-dsa/trie",
+    visibility = ["//visibility:public"],
+)
